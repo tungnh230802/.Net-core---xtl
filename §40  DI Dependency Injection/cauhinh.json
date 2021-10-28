@@ -1,0 +1,10 @@
+{
+    "section1" :{
+        "key1":"value1",
+        "key2":"value2"
+    },
+    "MyServiceOptions":{
+        "data1":"hoc c#",
+        "data2":2021
+    }
+}

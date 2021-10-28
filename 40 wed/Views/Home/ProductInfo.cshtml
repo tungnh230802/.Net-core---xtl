@@ -1,0 +1,8 @@
+@model Product
+<h1>thong tin san pham</h1>
+
+@if(Model == null) {
+    <div class="alert alert-danger">khong tim thay san pham</div>
+}else{
+    <div>@Model.Name</div>
+}
