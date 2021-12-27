@@ -1,0 +1,30 @@
+@page "/Trangdau.html/{solan:int?}"
+@model FirstPageModel
+@{
+    ViewData["title"] = "Trang dau";
+}
+
+<h1>Helle razor pages @Model.title</h1>
+@{
+    ViewData["mydata"] = "day la my data";
+}
+<h2>@ViewData["mydata"]</h2>
+<p>learning asp .net core <strong>@System.DateTime.Now</strong></p>
+
+@{
+    var a = 2;
+    var b = 3;
+    <p>a = @a, b = @b</p>
+    var solan = this.Request.RouteValues["solan"] ?? "0";
+
+    int solanInt = Int32.Parse(solan.ToString());
+}
+
+<p>tong cua a va b la @(a+b)</p>
+
+<p>so lan lap la @solanInt</p>
+
+
+<p>@Model.hello("tung")</p>
+
+<a asp-page="SecondPage">second page</a>

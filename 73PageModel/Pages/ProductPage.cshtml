@@ -1,0 +1,42 @@
+﻿@page "/product/{id:int?}"
+@model _73PageModel.Pages.ProductPageModel
+@{
+    var product = Model.product;
+    var products = Model.productService.AllProduct();
+}
+
+<h1>@ViewData["Title"]</h1>
+@if (product != null)
+{
+    <h2>@product.name</h2>
+    <p>@product.Description</p>
+    <p><a asp-page="ProductPage" asp-route-id="">Danh Sách sản phẩm</a>
+    <form method="post" asp-page="ProductPage" asp-page-handler="Delete" asp-route-id="@product.id">
+        <button type="submit" class="btn btn-danger">xoá</button>
+    </form>
+    </p>
+}
+else
+{
+    <ul>
+        @foreach (var item in products)
+        {
+            <li>
+                <a asp-page="ProductPage" asp-route-id="@item.id">@item.name</a>
+
+            </li>
+        }
+    </ul>
+    <hr>
+    <p>
+        <a class="btn btn-primary" asp-page="ProductPage" asp-page-handler="LastProduct">
+            Sản phẩm cuối
+        </a>
+        <a class="btn btn-danger" asp-page="ProductPage" asp-page-handler="RemoveAll">
+            xoá toàn bộ sản phẩm
+        </a>
+        <a class="btn btn-primary" asp-page="ProductPage" asp-page-handler="Load">
+            Nạp lại SP
+        </a>
+    </p>
+}
