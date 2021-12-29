@@ -1,7 +1,39 @@
-@page
+@page "/contact"
 @model ContactRequestModel
 
 <h1 class="display-4">trang lien he</h1>
 <p class="lead">dien cac thong tin lien he</p>
-<hr>
-<p>@Model.UserId</p> 
+
+<form class="bg-light p-2 m-2" method="Post" asp-page="ContactRequest">
+    <div class="mb-3">
+        <label class="form-label" asp-for="userContact.UserId"></label>
+        <input class="form-control" asp-for="userContact.UserId" />
+        <span class="text-danger" asp-validation-for="userContact.UserId"></span>
+    </div>
+        <div class="mb-3">
+        <label class="form-label" asp-for="userContact.Email"></label>
+        <input class="form-control" asp-for="userContact.Email" />
+        <span class="text-danger" asp-validation-for="userContact.Email"></span>
+    </div>
+        <div class="mb-3">
+        <label class="form-label" asp-for="userContact.UserName"></label>
+        <input class="form-control" asp-for="userContact.UserName" />
+        @* <span class="text-danger" asp-validation-for="UserId"></span> *@
+    </div>
+    <button class="btn btn-danger" type="submit">Send</button>
+</form>
+
+<div class="alert alert-danger">
+    <p>thông tin user</p>
+    <ul>
+        <li>User ID: @Model.userContact.UserId</li>
+        <li>Email: @Model.userContact.Email</li>
+        <li>User Name: @Model.userContact.UserName</li>
+    </ul>
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

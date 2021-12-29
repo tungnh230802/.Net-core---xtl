@@ -14,8 +14,23 @@ namespace _73PageModel.Pages
             this.productService = productService;
         }
         // tự động tìm trên url xem có trường 'id' không, nếu có thì tự động gán vào id
-        public void OnGet(int? id)
+        // [FromQuery]
+        public void OnGet([FromRoute(Name = "id")]int? id, [Bind("Id","Name")]Product sanpham)
         {
+            Console.WriteLine($"ID: {sanpham.id}");
+            Console.WriteLine($"Name: {sanpham.name}");
+
+            // var data =this.Request.Form["id"];
+            // var data =this.Request.Query["id"];
+            // var data =this.Request.RouteValues["id"];
+            // var data =this.Request.Headers["id"];
+
+            var data = this.Request.RouteValues["id"];
+            if (data != null)
+            {
+                Console.WriteLine(data.ToString());
+            }
+
             if (id != null)
             {
                 ViewData["Title"] = $"Sản phẩm có id = {id}";
